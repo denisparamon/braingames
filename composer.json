@@ -28,5 +28,8 @@
         "post-install-cmd": [
             "@php -r \"copy('.env.example', '.env');\""
         ]
-    }
+    },
+    "bin": [
+        "bin/brain-games"
+    ]
 }
