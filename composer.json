@@ -1,10 +1,18 @@
 {
     "name": "hexlet/code",
     "description": "hexlet/code",
+    "license": "MIT",
+    "type": "project",
     "require": {
         "php": "^7.4 || ^8.0",
         "wp-cli/php-cli-tools": "^0.12.1"
     },
+    "authors": [
+        {
+            "name": "Hooman",
+            "email": "denis_paramon@icloud.com"
+        }
+    ],
     "require-dev": {
         "phpunit/phpunit": "^9.5",
         "fakerphp/faker": "^1.19",
@@ -15,21 +23,21 @@
             "BrainGames\\": "src/"
         },
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/Engine.php",
+            "src/GameEven.php",
+            "src/GameCalc.php",
+            "src/GameGCD.php",
+            "src/GameProgression.php",
+            "src/GamePrime.php"
         ]
     },
-    "authors": [
-        {
-            "name": "Hooman",
-            "email": "denis_paramon@icloud.com"
-        }
-    ],
-    "config": {
-        "platform": {
-            "php": "8.0.0"
-        }
-    },
     "bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+        "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
     ]
 }
