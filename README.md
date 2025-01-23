@@ -1,8 +1,25 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/denisparamon/php-project-45/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/denisparamon/php-project-45/actions)
 
-## О проекте
-&laquo;Игры разума&raquo;&nbsp;&mdash; это набор консольных игр, написанных на&nbsp;языке PHP в&nbsp;качестве учебного проекта. Игры предназначены для проверки навыков устного счета и&nbsp;математических способностей.
+# Brain Games
+
+**Brain Games** — это набор консольных игр, написанных на PHP в качестве учебного проекта. Игры предназначены для тренировки устного счета и проверки математических способностей.
+
+## Системные требования
+
+- PHP версии **7.4** или выше
+- Composer версии **2.0** или выше
+- ОС: Linux, macOS или Windows с поддержкой Bash
+
+
+## Начало работы
+
+Чтобы развернуть проект локально, выполните последовательно следующие шаги:
+
+1. **Клонируйте репозиторий**:
+   ```bash
+   git clone https://github.com/sokoloff-rv/braingames.git braingames
+
 
 ## Начало работы
 
@@ -42,3 +59,7 @@
 - `make brain-gcd` — запуск игры "Наибольший общий делитель".
 - `make brain-progression` — запуск игры "Арифметическая прогрессия".
 - `make brain-prime` — запуск игры "Простое ли число?".
+
+## Asciinema Installation
+
+[![asciinema](https://asciinema.org/a/lONFlpq8zBZFp9G9WRv7q4CvG.svg)](https://asciinema.org/a/lONFlpq8zBZFp9G9WRv7q4CvG)
