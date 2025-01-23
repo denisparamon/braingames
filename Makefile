@@ -1,29 +1,20 @@
 install:
 	composer install
-
+dump:
+	composer dump-autoload
 validate:
 	composer validate
-
-brain-games:
-	bin/brain-games
-
-brain-even:
-	bin/brain-even
-
-brain-calc:
-	bin/brain-calc
-
-brain-gcd:
-	bin/brain-gcd
-
-brain-progression:
-	bin/brain-progression
-
-brain-prime:
-	bin/brain-prime
-
 lint:
 	composer exec --verbose phpcs -- --standard=PSR12 src bin
-
-fix:
-	composer exec --verbose phpcbf -- --standard=PSR12 src bin
+brain-even:
+	./src/Games/make brain-calc
+brain-calc:
+	./src/Games/GameCalc
+brain-gcd:
+	./src/Games/GameGcd
+brain-progression:
+	./src/Games/GameProgression
+brain-prime:
+	./src/Games/GamePrime
+brain-games:
+	./bin/brain-games
