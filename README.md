@@ -1,3 +1,7 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/eff196e60b287efee701/maintainability)](https://codeclimate.com/github/denisparamon/php-project-45/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/eff196e60b287efee701/test_coverage)](https://codeclimate.com/github/denisparamon/php-project-45/test_coverage)
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/denisparamon/php-project-45/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/denisparamon/php-project-45/actions)
 
@@ -7,9 +11,12 @@
 
 ## Системные требования
 
-- PHP версии **7.4** или выше
+- PHP версии **7.4** или выше 
 - Composer версии **2.0** или выше
 - ОС: Linux, macOS или Windows с поддержкой Bash
+
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/<ваш-токен>/maintainability)](https://codeclimate.com/github/denisparamon/php-project-45/maintainability)
 
 
 ## Начало работы
