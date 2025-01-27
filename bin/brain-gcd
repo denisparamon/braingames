@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function BrainGames\Games\Gcd\greeting;
+use function BrainGames\Games\Gcd\getPlayersAnswer;
+use function BrainGames\Games\Gcd\congratulations;
+use function BrainGames\Games\Gcd\calculateGcd;
+use function BrainGames\Games\Gcd\isCorrect;
+use function cli\line;
+
+$playerName = greeting();
+line('Find the greatest common divisor of given numbers.');
+
+for ($numberOfQuestions = 0; $numberOfQuestions < 3; $numberOfQuestions++) {
+    $firstNumber = rand(1, 100);
+    $secondNumber = rand(1, 100);
+    $correctAnswer = calculateGcd($firstNumber, $secondNumber);
+    $expression = "$firstNumber $secondNumber";
+
+    $playerAnswer = getPlayersAnswer($expression);
+
+    if (isCorrect($playerAnswer, $correctAnswer)) {
+        line('Correct!');
+    } else {
+        line("'{$playerAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+        line("Let's try again, $playerName!");
+        break;
+    }
+}
+
+congratulations($numberOfQuestions, $playerName);
