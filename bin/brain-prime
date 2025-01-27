@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use function BrainGames\Games\Prime\greeting;
+use function BrainGames\Games\Prime\getPlayersAnswer;
+use function BrainGames\Games\Prime\congratulations;
+use function BrainGames\Games\Prime\isPrime;
+use function cli\line;
+
+$playerName = greeting();
+line('Answer "yes" if the given number is prime. Otherwise answer "no".');
+
+for ($numberOfQuestions = 0; $numberOfQuestions < 3; $numberOfQuestions++) {
+    $number = rand(1, 100);
+    $correctAnswer = isPrime($number) ? 'yes' : 'no';
+
+    line("Question: $number");
+    $playerAnswer = getPlayersAnswer();
+
+    if ($playerAnswer === $correctAnswer) {
+        line('Correct!');
+    } else {
+        line("'{$playerAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+        line("Let's try again, $playerName!");
+        break;
+    }
+}
+
+congratulations($numberOfQuestions, $playerName);

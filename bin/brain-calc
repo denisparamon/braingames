@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';  // Подключаем автозагрузчик
+
+use function BrainGames\Engine\greeting;
+use function BrainGames\Engine\getPlayersAnswer;
+use function BrainGames\Engine\concratulations;
+use function BrainGames\Engine\resultArrayCalc;
+use function BrainGames\Engine\isCorrect;
+use function cli\line;
+
+$playerName = greeting();
+line('What is the result of the expression?');
+
+for ($numberOfQuestions = 0; $numberOfQuestions < 3; $numberOfQuestions++) {
+    $firstNumber = rand(0, 5);
+    $secondNumber = rand(0, 5);
+    $resultArr = resultArrayCalc($firstNumber, $secondNumber);
+    $correctAnswer = $resultArr['correctAnswer'];
+    $expression = $resultArr['expression'];
+
+    $playerAnswer = getPlayersAnswer($expression);
+
+    if (isCorrect($playerAnswer, $correctAnswer)) {
+        line('Correct!');
+    } else {
+        line("'{$playerAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+        line("Let's try again, $playerName!");
+        break;
+    }
+}
+
+concratulations($numberOfQuestions, $playerName);

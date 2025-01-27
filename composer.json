@@ -1,0 +1,34 @@
+{
+    "name": "hexlet/code",
+    "description": "Educational PHP project for practicing Composer.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Denis Paramonov",
+            "email": "denis_paramon@example.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "src/Cli.php",
+            "src/Engine.php",
+            "src/Games/Gcd.php",
+            "src/Games/Progression.php",
+            "src/Games/Prime.php"
+        ]
+    },
+    "bin": [
+        "bin/brain-games",
+        "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "4.0.x-dev",
+        "wp-cli/php-cli-tools": "^0.12.1"
+    }
+}
