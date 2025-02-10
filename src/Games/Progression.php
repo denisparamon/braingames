@@ -2,55 +2,33 @@
 
 namespace BrainGames\Games\Progression;
 
-use function cli\line;
-use function cli\prompt;
+use BrainGames\Engine;
 
-function greeting(): string
+const DESCRIPTION = 'What number is missing in the progression?';
+const PROGRESSION_LENGTH = 10;
+
+function genRoundData(): array
 {
-    line("Welcome to the Brain Game!");
-    $name = prompt('May I have your name?');
-    return $name;
+    $firstMember = rand(1, 25);
+    $difference = rand(2, 15);
+    $lastMemberIndex = PROGRESSION_LENGTH - 1;
+    $hiddenMemberIndex = rand(0, $lastMemberIndex);
+    $lastMember = $firstMember + $difference * $lastMemberIndex;
+    $progression = range($firstMember, $lastMember, $difference);
+
+    $answer = (string) $progression[$hiddenMemberIndex];
+    $progression[$hiddenMemberIndex] = '..';
+    $question = implode(' ', $progression);
+
+    return [$question, $answer];
 }
 
-function getPlayersAnswer(string $progression): string
+function runGame(): void
 {
-    return prompt("What number is missing in the progression? $progression");
-}
-
-function generateProgression(): array
-{
-    // Генерация прогрессии
-    $start = rand(1, 50);
-    $step = rand(2, 10);
-    $length = rand(5, 10); // Длина прогрессии от 5 до 10 чисел
-
-    // Вычисление прогрессии
-    $progression = [];
-    for ($i = 0; $i < $length; $i++) {
-        $progression[] = $start + $i * $step;
+    $gameData = [];
+    for ($i = 0; $i < Engine\ROUNDS_COUNT; $i += 1) {
+        $gameData[] = genRoundData();
     }
 
-    // Выбираем случайный индекс для скрытого числа
-    $missingIndex = rand(0, $length - 1);
-    $missingNumber = $progression[$missingIndex];
-
-    // Заменяем скрытое число на '..'
-    $progression[$missingIndex] = '..';
-
-    return [
-        'progression' => $progression,
-        'missing' => $missingNumber
-    ];
-}
-
-function isCorrect(string $playerAnswer, int $correctAnswer): bool
-{
-    return (int)$playerAnswer === $correctAnswer;
-}
-
-function congratulations(int $numberOfQuestions, string $playerName): void
-{
-    if ($numberOfQuestions === 3) {
-        line("Congratulations, $playerName!");
-    }
+    Engine\run(DESCRIPTION, $gameData);
 }

@@ -5,33 +5,28 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function greeting(): string
-{
-    line("Welcome to the Brain Game!");
-    $name = prompt('May I have your name?');
-    return $name;
-}
+const ROUNDS_COUNT = 3;
 
-function getPlayersAnswer(string $expression): string
+function run(string $description, array $gameData): void
 {
-    return prompt("What is the result of the expression? $expression");
-}
+    line('Welcome to the Brain Games!');
+    line($description);
+    line();
+    $userName = prompt('May I have your name? ', 'Guest', '');
+    line('Hello, %s!', $userName);
+    line();
 
-function resultArrayCalc(int $first, int $second): array
-{
-    $expression = "$first + $second";
-    $correctAnswer = $first + $second;
-    return ['expression' => $expression, 'correctAnswer' => $correctAnswer];
-}
+    for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
+        [$question, $answer] = $gameData[$i];
+        line('Question: %s', $question);
+        $userAnswer = prompt('Your answer');
 
-function isCorrect(string $playerAnswer, int $correctAnswer): bool
-{
-    return (int)$playerAnswer === $correctAnswer;
-}
-
-function concratulations(int $numberOfQuestions, string $playerName): void
-{
-    if ($numberOfQuestions === 3) {
-        line("Congratulations, $playerName!");
+        if ($userAnswer !== $answer) {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $answer);
+            line("Let's try again, %s!", $userName);
+            return;
+        }
+        line('Correct!');
     }
+    line('Congratulations, %s!', $userName);
 }

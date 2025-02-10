@@ -47,15 +47,15 @@
 
 - `./bin/brain-games` - Приветствие  
   [![asciinema](https://asciinema.org/a/I2P9AD1EnZ5SYLQrrw9BQfPJH.svg)](https://asciinema.org/a/I2P9AD1EnZ5SYLQrrw9BQfPJH)  
-- `make brain-even` — запуск игры "Проверка на четность".  
+- `./bin/brain-even` — запуск игры "Проверка на четность".  
   [![asciinema](https://asciinema.org/a/CW99bP4RcVfZTSypHy6R261Yv.svg)](https://asciinema.org/a/CW99bP4RcVfZTSypHy6R261Yv)  
-- `make brain-calc` — запуск игры "Калькулятор".  
+- `./bin/brain-calc` — запуск игры "Калькулятор".  
   [![asciinema](https://asciinema.org/a/iZGnGQ15Zu2QUh9wmRg0tzYKi.svg)](https://asciinema.org/a/iZGnGQ15Zu2QUh9wmRg0tzYKi)  
-- `make brain-gcd` — запуск игры "Наибольший общий делитель".  
+- `./bin/brain-gcd` — запуск игры "Наибольший общий делитель".  
   [![asciinema](https://asciinema.org/a/FGANHMFtG5wDZgExnaQLZJ6Tv.svg)](https://asciinema.org/a/FGANHMFtG5wDZgExnaQLZJ6Tv)
-- `make brain-progression` — запуск игры "Арифметическая прогрессия".  
+- `./bin/brain-progression` — запуск игры "Арифметическая прогрессия".  
   [![asciinema](https://asciinema.org/a/Gh4llqT6DGpceWXGmMvMAf9C4.svg)](https://asciinema.org/a/Gh4llqT6DGpceWXGmMvMAf9C4)  
-- `make brain-prime` — запуск игры "Простое ли число?".  
+- `./bin/brain-prime` — запуск игры "Простое ли число?".  
   [![asciinema](https://asciinema.org/a/VehhJoRdEjDxZvEkn88S1Soe1.svg)](https://asciinema.org/a/VehhJoRdEjDxZvEkn88S1Soe1) 
 
 

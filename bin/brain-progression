@@ -1,32 +1,13 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
 
-use function BrainGames\Games\Progression\greeting;
-use function BrainGames\Games\Progression\getPlayersAnswer;
-use function BrainGames\Games\Progression\congratulations;
-use function BrainGames\Games\Progression\generateProgression;
-use function BrainGames\Games\Progression\isCorrect;
-use function cli\line;
-
-$playerName = greeting();
-line('What number is missing in the progression?');
-
-for ($numberOfQuestions = 0; $numberOfQuestions < 3; $numberOfQuestions++) {
-    $progression = generateProgression();
-    $correctAnswer = $progression['missing'];
-    $progressionStr = implode(' ', $progression['progression']);
-
-    $playerAnswer = getPlayersAnswer($progressionStr);
-
-    if (isCorrect($playerAnswer, $correctAnswer)) {
-        line('Correct!');
-    } else {
-        line("'{$playerAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
-        line("Let's try again, $playerName!");
-        break;
-    }
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
 }
 
-congratulations($numberOfQuestions, $playerName);
+BrainGames\Games\Progression\runGame();

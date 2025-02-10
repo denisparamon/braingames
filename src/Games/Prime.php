@@ -2,20 +2,9 @@
 
 namespace BrainGames\Games\Prime;
 
-use function cli\line;
-use function cli\prompt;
+use BrainGames\Engine;
 
-function greeting(): string
-{
-    line("Welcome to the Brain Game!");
-    $name = prompt('May I have your name?');
-    return $name;
-}
-
-function getPlayersAnswer(): string
-{
-    return prompt('Your answer (yes/no)');
-}
+const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function isPrime(int $number): bool
 {
@@ -23,8 +12,8 @@ function isPrime(int $number): bool
         return false;
     }
 
-    for ($i = 2; $i <= sqrt($number); $i++) {
-        if ($number % $i === 0) {
+    for ($divisor = 2; $divisor <= sqrt($number); $divisor += 1) {
+        if ($number % $divisor === 0) {
             return false;
         }
     }
@@ -32,9 +21,21 @@ function isPrime(int $number): bool
     return true;
 }
 
-function congratulations(int $numberOfQuestions, string $playerName): void
+function genRoundData(): array
 {
-    if ($numberOfQuestions === 3) {
-        line("Congratulations, $playerName!");
+    $number = rand(0, 99);
+    $question = (string) $number;
+    $answer = isPrime($number) ? 'yes' : 'no';
+
+    return [$question, $answer];
+}
+
+function runGame(): void
+{
+    $gameData = [];
+    for ($i = 0; $i < Engine\ROUNDS_COUNT; $i += 1) {
+        $gameData[] = genRoundData();
     }
+
+    Engine\run(DESCRIPTION, $gameData);
 }

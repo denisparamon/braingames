@@ -2,39 +2,34 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function cli\line;
-use function cli\prompt;
+use BrainGames\Engine;
 
-function greeting(): string
-{
-    line("Welcome to the Brain Game!");
-    $name = prompt('May I have your name?');
-    return $name;
-}
+const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
-function getPlayersAnswer(string $expression): string
+function getGcd(int $a, int $b): int
 {
-    return prompt("What is the greatest common divisor of the following numbers? $expression");
-}
-
-function calculateGcd(int $a, int $b): int
-{
-    while ($b !== 0) {
-        $temp = $b;
-        $b = $a % $b;
-        $a = $temp;
+    if ($b === 0) {
+        return $a;
     }
-    return $a;
+    return getGcd($b, $a % $b);
 }
 
-function isCorrect(string $playerAnswer, int $correctAnswer): bool
+function genRoundData(): array
 {
-    return (int)$playerAnswer === $correctAnswer;
+    $number1 = rand(0, 50);
+    $number2 = rand(0, 50);
+    $question = "{$number1} {$number2}";
+    $answer = (string) getGcd($number1, $number2);
+
+    return [$question, $answer];
 }
 
-function congratulations(int $numberOfQuestions, string $playerName): void
+function runGame(): void
 {
-    if ($numberOfQuestions === 3) {
-        line("Congratulations, $playerName!");
+    $gameData = [];
+    for ($i = 0; $i < Engine\ROUNDS_COUNT; $i += 1) {
+        $gameData[] = genRoundData();
     }
+
+    Engine\run(DESCRIPTION, $gameData);
 }
