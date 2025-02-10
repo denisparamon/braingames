@@ -2,44 +2,38 @@
 
 namespace BrainGames\Games\Calc;
 
-use BrainGames\Engine;
+use function BrainGames\Engine\runGame;
 
 const DESCRIPTION = 'What is the result of the expression?';
 
-const OPERATORS = ['+', '-', '*'];
-
-function calculate(string $operator, int $a, int $b): int
+function calculateExpression(int $num1, int $num2, string $operator): int
 {
     switch ($operator) {
         case '+':
-            return $a + $b;
+            return $num1 + $num2;
         case '-':
-            return $a - $b;
+            return $num1 - $num2;
         case '*':
-            return $a * $b;
+            return $num1 * $num2;
         default:
-            throw new \Exception('Operator not found');
+            throw new \Exception("Unknown operator: {$operator}");
     }
 }
 
-function genRoundData(): array
+function generateGameData(): array
 {
-    $number1 = rand(1, 25);
-    $number2 = rand(1, 25);
-    $operatorIndex = rand(0, count(OPERATORS) - 1);
-    $operator = OPERATORS[$operatorIndex];
-    $question = "{$number1} {$operator} {$number2}";
-    $answer = (string) calculate($operator, $number1, $number2);
+    $num1 = rand(1, 20);
+    $num2 = rand(1, 20);
+    $operators = ['+', '-', '*'];
+    $operator = $operators[array_rand($operators)];
 
-    return [$question, $answer];
+    $question = "{$num1} {$operator} {$num2}";
+    $correctAnswer = (string) calculateExpression($num1, $num2, $operator);
+
+    return [$question, $correctAnswer];
 }
 
-function runGame(): void
+function playCalcGame(): void
 {
-    $gameData = [];
-    for ($i = 0; $i < Engine\ROUNDS_COUNT; $i += 1) {
-        $gameData[] = genRoundData();
-    }
-
-    Engine\run(DESCRIPTION, $gameData);
+    runGame(DESCRIPTION, 'BrainGames\Games\Calc\generateGameData');
 }

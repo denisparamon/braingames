@@ -35,5 +35,9 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "4.0.x-dev"
+    },
+    "scripts": {
+        "lint": "phpcs --standard=PSR12 src bin"
     }
+
 }

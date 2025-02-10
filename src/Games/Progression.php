@@ -2,33 +2,36 @@
 
 namespace BrainGames\Games\Progression;
 
-use BrainGames\Engine;
+use function BrainGames\Engine\runGame;
 
 const DESCRIPTION = 'What number is missing in the progression?';
 const PROGRESSION_LENGTH = 10;
 
-function genRoundData(): array
+function generateProgression(int $start, int $step, int $length): array
 {
-    $firstMember = rand(1, 25);
-    $difference = rand(2, 15);
-    $lastMemberIndex = PROGRESSION_LENGTH - 1;
-    $hiddenMemberIndex = rand(0, $lastMemberIndex);
-    $lastMember = $firstMember + $difference * $lastMemberIndex;
-    $progression = range($firstMember, $lastMember, $difference);
-
-    $answer = (string) $progression[$hiddenMemberIndex];
-    $progression[$hiddenMemberIndex] = '..';
-    $question = implode(' ', $progression);
-
-    return [$question, $answer];
+    $progression = [];
+    for ($i = 0; $i < $length; $i++) {
+        $progression[] = $start + ($i * $step);
+    }
+    return $progression;
 }
 
-function runGame(): void
+function generateGameData(): array
 {
-    $gameData = [];
-    for ($i = 0; $i < Engine\ROUNDS_COUNT; $i += 1) {
-        $gameData[] = genRoundData();
-    }
+    $start = rand(1, 50);
+    $step = rand(1, 10);
+    $hiddenIndex = rand(0, PROGRESSION_LENGTH - 1);
 
-    Engine\run(DESCRIPTION, $gameData);
+    $progression = generateProgression($start, $step, PROGRESSION_LENGTH);
+    $correctAnswer = (string) $progression[$hiddenIndex];
+    $progression[$hiddenIndex] = '..';
+
+    $question = implode(' ', $progression);
+
+    return [$question, $correctAnswer];
+}
+
+function playProgressionGame(): void
+{
+    runGame(DESCRIPTION, 'BrainGames\Games\Progression\generateGameData');
 }

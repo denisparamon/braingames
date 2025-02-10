@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\Prime;
 
-use BrainGames\Engine;
+use function BrainGames\Engine\runGame;
 
 const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -11,31 +11,23 @@ function isPrime(int $number): bool
     if ($number < 2) {
         return false;
     }
-
-    for ($divisor = 2; $divisor <= sqrt($number); $divisor += 1) {
-        if ($number % $divisor === 0) {
+    for ($i = 2; $i <= sqrt($number); $i++) {
+        if ($number % $i === 0) {
             return false;
         }
     }
-
     return true;
 }
 
-function genRoundData(): array
+function generateGameData(): array
 {
-    $number = rand(0, 99);
+    $number = rand(1, 100);
     $question = (string) $number;
-    $answer = isPrime($number) ? 'yes' : 'no';
-
-    return [$question, $answer];
+    $correctAnswer = isPrime($number) ? 'yes' : 'no';
+    return [$question, $correctAnswer];
 }
 
-function runGame(): void
+function playPrimeGame(): void
 {
-    $gameData = [];
-    for ($i = 0; $i < Engine\ROUNDS_COUNT; $i += 1) {
-        $gameData[] = genRoundData();
-    }
-
-    Engine\run(DESCRIPTION, $gameData);
+    runGame(DESCRIPTION, 'BrainGames\Games\Prime\generateGameData');
 }
