@@ -1,36 +1,39 @@
 {
     "name": "hexlet/code",
-    "description": "Educational PHP project for practicing Composer.",
     "type": "project",
+    "description": "console games",
+    "keywords":    ["console", "games"],
     "license": "MIT",
+    "bin" : [
+        "bin/brain-calc",
+        "bin/brain-even",
+        "bin/brain-gcd",
+        "bin/brain-prime",
+        "bin/brain-progression"
+    ],
     "authors": [
         {
             "name": "Denis Paramonov",
             "email": "denis_paramon@example.com"
         }
     ],
-    "minimum-stability": "dev",
+    "scripts": {
+        "phpcs": "phpcs"
+    },
     "autoload": {
         "files": [
-            "src/Cli.php",
-            "src/Engine.php",
-            "src/Games/Calc.php",
-            "src/Games/EvenGame.php",
-            "src/Games/Gcd.php",
-            "src/Games/Progression.php",
-            "src/Games/Prime.php"
+            "src/games/Even.php",
+            "src/games/Calc.php",
+            "src/games/Gcd.php",
+            "src/games/Progression.php",
+            "src/games/Prime.php",
+            "src/engine.php"
         ]
     },
-    "bin": [
-        "bin/brain-games",
-        "bin/brain-even",
-        "bin/brain-calc",
-        "bin/brain-gcd",
-        "bin/brain-progression",
-        "bin/brain-prime"
-    ],
-    "require-dev": {
-        "squizlabs/php_codesniffer": "4.0.x-dev",
+    "require": {
         "wp-cli/php-cli-tools": "^0.12.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "4.0.x-dev"
     }
 }
