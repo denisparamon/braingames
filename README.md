@@ -51,4 +51,4 @@
 - `make brain-prime` — запуск игры "Простое ли число?".  
   [![asciinema](https://asciinema.org/a/VehhJoRdEjDxZvEkn88S1Soe1.svg)](https://asciinema.org/a/VehhJoRdEjDxZvEkn88S1Soe1) 
 
-
+  
