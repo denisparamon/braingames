@@ -42,7 +42,7 @@
   [![asciinema](https://asciinema.org/a/I2P9AD1EnZ5SYLQrrw9BQfPJH.svg)](https://asciinema.org/a/I2P9AD1EnZ5SYLQrrw9BQfPJH)  
 - `make brain-even` — запуск игры "Проверка на четность".  
   [![asciinema](https://asciinema.org/a/CW99bP4RcVfZTSypHy6R261Yv.svg)](https://asciinema.org/a/CW99bP4RcVfZTSypHy6R261Yv)  
-- `.make brain-calc` — запуск игры "Калькулятор".  
+- `make brain-calc` — запуск игры "Калькулятор".  
   [![asciinema](https://asciinema.org/a/iZGnGQ15Zu2QUh9wmRg0tzYKi.svg)](https://asciinema.org/a/iZGnGQ15Zu2QUh9wmRg0tzYKi)  
 - `make brain-gcd` — запуск игры "Наибольший общий делитель".  
   [![asciinema](https://asciinema.org/a/FGANHMFtG5wDZgExnaQLZJ6Tv.svg)](https://asciinema.org/a/FGANHMFtG5wDZgExnaQLZJ6Tv)
