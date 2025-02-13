@@ -5,6 +5,8 @@ namespace BrainGames\Games\Gcd;
 use function BrainGames\Engine\runGame;
 
 const DESCRIPTION = 'Find the greatest common divisor of given numbers.';
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 100;
 
 function calculateGcd(int $a, int $b): int
 {
@@ -13,8 +15,8 @@ function calculateGcd(int $a, int $b): int
 
 function generateGameData(): array
 {
-    $num1 = rand(1, 100);
-    $num2 = rand(1, 100);
+    $num1 = rand(MIN_NUMBER, MAX_NUMBER);
+    $num2 = rand(MIN_NUMBER, MAX_NUMBER);
 
     $question = "{$num1} {$num2}";
     $correctAnswer = (string) calculateGcd($num1, $num2);

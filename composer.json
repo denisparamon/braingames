@@ -15,11 +15,12 @@
     "authors": [
         {
             "name": "Denis Paramonov",
-            "email": "denis_paramon@example.com"
+            "email": "denis_paramon@iloud.com"
         }
     ],
     "scripts": {
-        "phpcs": "phpcs"
+        "phpcs": "phpcs",
+        "lint": "phpcs --standard=PSR12 src bin"
     },
     "autoload": {
         "files": [
@@ -37,9 +38,5 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "4.0.x-dev"
-    },
-    "scripts": {
-        "lint": "phpcs --standard=PSR12 src bin"
     }
-
 }

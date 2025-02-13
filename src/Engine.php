@@ -14,7 +14,7 @@ function runGame(string $gameDescription, callable $generateGameData): void
     line("Hello, %s!", $name);
     line($gameDescription);
 
-    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
+    for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         [$question, $correctAnswer] = $generateGameData();
         line("Question: %s", $question);
         $userAnswer = prompt('Your answer');

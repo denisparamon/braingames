@@ -1,9 +1,6 @@
 install:
 	composer install
 
-.gitignore:
-	echo "vendor/" >> .gitignore
-
 brain-games:
 	./bin/brain-games
 

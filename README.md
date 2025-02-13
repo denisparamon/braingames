@@ -19,7 +19,7 @@
 1. Клонируйте репозиторий:
 
     ```bash
-    git https://github.com/denisparamon/php-project-45
+    git https://github.com/denisparamon/braingames
     ```
 2. Перейдите в директорию проекта:
 
