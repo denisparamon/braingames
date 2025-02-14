@@ -5,13 +5,16 @@ namespace BrainGames\Games\Prime;
 use function BrainGames\Engine\runGame;
 
 const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 100;
+const FIRST_PRIME = 2;
 
 function isPrime(int $number): bool
 {
-    if ($number < 2) {
+    if ($number < FIRST_PRIME) {
         return false;
     }
-    for ($i = 2; $i <= sqrt($number); $i++) {
+    for ($i = FIRST_PRIME; $i <= sqrt($number); $i++) {
         if ($number % $i === 0) {
             return false;
         }
@@ -21,9 +24,10 @@ function isPrime(int $number): bool
 
 function generateGameData(): array
 {
-    $number = rand(1, 100);
+    $number = rand(MIN_NUMBER, MAX_NUMBER);
     $question = (string) $number;
     $correctAnswer = isPrime($number) ? 'yes' : 'no';
+
     return [$question, $correctAnswer];
 }
 
